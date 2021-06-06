@@ -7,7 +7,7 @@ module.exports = {
     },
   },
   css: {
-    extract: true,
+    extract: false,
   },
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {

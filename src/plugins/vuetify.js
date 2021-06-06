@@ -26,6 +26,7 @@ export default new Vuetify({
     values: {
       add: "fas fa-plus",
       close: "fas fa-times",
+      home: "fas fa-home",
     },
   },
 });
