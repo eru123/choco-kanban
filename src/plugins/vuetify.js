@@ -27,6 +27,10 @@ export default new Vuetify({
       add: "fas fa-plus",
       close: "fas fa-times",
       home: "fas fa-home",
+      tasks: "fas fa-list-ul",
+      ongoing: "fas fa-vial",
+      done: "fas fa-clipboard-check",
+      back: "fas fa-arrow-left",
     },
   },
 });

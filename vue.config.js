@@ -18,6 +18,7 @@ module.exports = {
   pwa: {
     name: require("./project.json").appName,
     themeColor: "#f1f1f1",
+    backgroundColor: "#ffffff",
     msTileColor: "#f1f1f1",
     assetsVersion: require("./package.json").version,
   },

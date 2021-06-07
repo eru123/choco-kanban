@@ -3,8 +3,8 @@
     v-model="dialog"
     persistent
     scrollable
-    fullscreen
-    hide-overlay
+    width="500"
+    :fullscreen="$vuetify.breakpoint.mdAndDown ? true : false"
     transition="dialog-bottom-transition"
   >
     <template v-slot:activator="{ on, attrs }">
@@ -19,7 +19,7 @@
           <v-btn icon dark @click="dialog = false">
             <v-icon>$close</v-icon>
           </v-btn>
-          <v-toolbar-title>Add Task</v-toolbar-title>
+          <v-toolbar-title>Add Board</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
       </v-card-title>
@@ -80,10 +80,12 @@ export default {
   name: "AddNewTask",
   data: () => ({
     board: {
-      name: "dsads",
-      status: "todo",
-      hasDue: false,
-      due: null,
+      name: "OK Test",
+      items: [
+        {
+          status: "done",
+        },
+      ],
     },
     dialog: false,
   }),

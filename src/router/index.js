@@ -5,6 +5,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/boards",
+    name: "Boards",
+    component: () => import("@/views/Boards"),
+  },
+  {
     path: "/board",
     component: () => import("@/components/MonoBoard"),
     children: [
@@ -18,10 +23,22 @@ const routes = [
         children: [
           {
             path: "",
-            redirect: "/",
+            redirect: "tasks",
           },
           {
-            path: ":page",
+            path: "tasks",
+            name: "Tasks",
+            component: () => import("@/components/BoardTasks"),
+          },
+          {
+            path: "ongoing",
+            name: "Ongoing",
+            component: () => import("@/components/BoardOngoing"),
+          },
+          {
+            path: "done",
+            name: "Done",
+            component: () => import("@/components/BoardDone"),
           },
         ],
       },
@@ -31,6 +48,10 @@ const routes = [
     path: "/about",
     name: "About",
     component: () => import("@/views/About"),
+  },
+  {
+    path: "*",
+    redirect: "/boards",
   },
 ];
 
