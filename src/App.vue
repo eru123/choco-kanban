@@ -1,6 +1,11 @@
 <template>
   <router-view />
 </template>
+<style lang="scss">
+html {
+  overflow: hidden !important;
+}
+</style>
 <script>
 import { mapState } from "vuex";
 export default {

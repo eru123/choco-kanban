@@ -16,18 +16,21 @@
         width="35"
       />
     </div>
-    <v-app-bar-title>hoco Kanban</v-app-bar-title>
+    <v-app-bar-title> <h3>hoco Kanban</h3> </v-app-bar-title>
     <v-spacer />
-    <add-new-board />
+    <add-new-board v-if="isMobile" />
+    <boards-settings v-if="isMobile" />
   </v-app-bar>
 </template>
 
 <script>
 import AddNewBoard from "@/components/AddNewBoard";
+import BoardsSettings from "@/components/BoardsSettings";
 export default {
   name: "AppBar",
   components: {
     AddNewBoard,
+    BoardsSettings,
   },
 };
 </script>

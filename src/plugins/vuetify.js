@@ -31,6 +31,7 @@ export default new Vuetify({
       ongoing: "fas fa-vial",
       done: "fas fa-clipboard-check",
       back: "fas fa-arrow-left",
+      settings: "fas fa-cog",
     },
   },
 });

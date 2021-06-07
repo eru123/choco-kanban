@@ -12,7 +12,6 @@
         <v-icon>$add</v-icon>
       </v-btn>
     </template>
-
     <v-card tile>
       <v-card-title class="pa-0">
         <v-toolbar dark color="primary" flat>
@@ -23,54 +22,20 @@
           <v-spacer></v-spacer>
         </v-toolbar>
       </v-card-title>
-      <v-card-text>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias,
-          non. Ad voluptate hic, atque perferendis quos tempore, consequatur
-          temporibus ipsa harum nisi nostrum quaerat numquam mollitia explicabo,
-          esse quae, quas!
-        </div>
+      <v-card-text class="py-7">
+        <v-text-field
+          hide-details
+          v-model="board.name"
+          label="Board Name"
+          placeholder="(Ex. Thesis, Awesome Project)"
+          outlined
+          autocomplete="off"
+        ></v-text-field>
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="save"> Save </v-btn>
+        <v-btn color="primary" text @click="save"> ADD </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -80,16 +45,23 @@ export default {
   name: "AddNewTask",
   data: () => ({
     board: {
-      name: "OK Test",
-      items: [
-        {
-          status: "done",
-        },
-      ],
+      name: null,
+      items: [],
     },
     dialog: false,
   }),
+  watch: {
+    dialog: {
+      handler: "onOpenDialog",
+      immediate: true,
+    },
+  },
   methods: {
+    onOpenDialog(dialog) {
+      if (dialog) {
+        this.board.name = null;
+      }
+    },
     save() {
       this.$kanban().addBoard(this.board);
       this.dialog = false;

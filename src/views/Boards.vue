@@ -8,7 +8,7 @@
     />
     <app-bar />
     <v-main v-if="isMobile">
-      <v-list v-if="kanban.length > 0">
+      <v-list v-if="kanban.length > 0" class="py-0">
         <boards-list :items="ongoing" icon="$ongoing" />
         <boards-list :items="tasks" color="#333" icon="$tasks" />
         <boards-list :items="done" color="success" icon="$done" />

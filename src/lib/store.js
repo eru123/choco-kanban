@@ -16,7 +16,8 @@ const state = {
 const mutations = {
   ...mutate(state),
   kanbanPush: (state, value) => {
-    state.kanban.push(value);
+    const { name, items } = value;
+    state.kanban.push({ name, items });
   },
 };
 
