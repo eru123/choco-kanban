@@ -26,7 +26,7 @@
       <v-container fill-height>
         <v-row align="center" justify="center">
           <v-col align="center" style="color: gray">
-            Select a Kanban Board in <br />
+            Select a Project <br />
             in the left sidebar
           </v-col>
         </v-row>

@@ -18,25 +18,27 @@
           <v-btn icon dark @click="dialog = false">
             <v-icon>$close</v-icon>
           </v-btn>
-          <v-toolbar-title>Add Board</v-toolbar-title>
+          <v-toolbar-title>Create Project</v-toolbar-title>
           <v-spacer></v-spacer>
         </v-toolbar>
       </v-card-title>
-      <v-card-text class="py-7">
-        <v-text-field
-          hide-details
-          v-model="board.name"
-          label="Board Name"
-          placeholder="(Ex. Thesis, Awesome Project)"
-          outlined
-          autocomplete="off"
-        ></v-text-field>
-      </v-card-text>
-      <v-divider></v-divider>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="save"> ADD </v-btn>
-      </v-card-actions>
+      <v-form @submit.prevent="save">
+        <v-card-text class="py-7">
+          <v-text-field
+            hide-details
+            v-model="board.name"
+            label="Board Name"
+            placeholder="(Ex. Thesis, Awesome Project)"
+            outlined
+            autocomplete="off"
+          ></v-text-field>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" text type="submit"> CREATE </v-btn>
+        </v-card-actions>
+      </v-form>
     </v-card>
   </v-dialog>
 </template>
@@ -45,7 +47,7 @@ export default {
   name: "AddNewBoard",
   data: () => ({
     board: {
-      name: null,
+      name: "",
       items: [],
     },
     dialog: false,
@@ -63,8 +65,10 @@ export default {
       }
     },
     save() {
-      this.$kanban().addBoard(this.board);
-      this.dialog = false;
+      if (this.board.name.length > 0) {
+        this.$kanban().addBoard(this.board);
+        this.dialog = false;
+      }
     },
   },
 };

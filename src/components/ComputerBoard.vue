@@ -1,41 +1,42 @@
 <template>
   <v-main>
-    <v-toolbar flat>
-      <v-toolbar-title>{{ data.name }}</v-toolbar-title>
-      <v-spacer />
-      <add-new-task />
-      <board-settings :item="kanban[index]" />
-    </v-toolbar>
-    <v-divider></v-divider>
-    <div v-if="index >= 0" class="d-flex align-start justify-start">
-      <computer-board-tab
-        style="flex: 1"
-        color="#333"
-        title="Tasks"
-        handle="tasks"
-        :index="index"
-      />
-      <computer-board-tab
-        style="flex: 1"
-        color="primary"
-        title="On Going"
-        handle="ongoing"
-        :index="index"
-      />
-      <computer-board-tab
-        style="flex: 1"
-        color="success"
-        title="Done"
-        handle="done"
-        :index="index"
-      />
+    <div v-if="kanban[index]">
+      <v-toolbar flat>
+        <v-toolbar-title>{{ data.name }}</v-toolbar-title>
+        <v-spacer />
+        <add-new-task />
+        <board-settings :item="kanban[index]" />
+      </v-toolbar>
+      <v-divider></v-divider>
+
+      <div class="d-flex align-start justify-start">
+        <computer-board-tab
+          style="flex: 1"
+          title="Tasks"
+          handle="tasks"
+          :index="index"
+        />
+        <computer-board-tab
+          style="flex: 1"
+          title="On Going"
+          handle="ongoing"
+          :index="index"
+        />
+        <computer-board-tab
+          style="flex: 1"
+          title="Done"
+          handle="done"
+          :index="index"
+        />
+      </div>
     </div>
+
     <v-container v-else fill-height class="pa-0">
       <v-row align="center" justify="center">
         <v-col align="center" style="color: gray">
-          Select a Kanban Board in <br />
-          in the left sidebar
-        </v-col>
+          Select a Project <br />
+          in the left sidebar </v-col
+        >[]
       </v-row>
     </v-container>
   </v-main>

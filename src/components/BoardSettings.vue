@@ -5,7 +5,7 @@
         <v-icon>$option</v-icon>
       </v-btn>
     </template>
-    <v-list>
+    <v-list dense class="py-0">
       <v-list-item v-for="item in 3" :key="item">
         <v-list-item-title>{{ item }}</v-list-item-title>
       </v-list-item>

@@ -7,7 +7,7 @@
             ><router-link
               :to="{ name: 'Boards' }"
               style="text-decoration: none; color: #333"
-              >Boards</router-link
+              >Projects</router-link
             ></v-toolbar-title
           >
           <v-spacer></v-spacer>
@@ -20,10 +20,10 @@
         class="pa-0"
         style="height: calc(100vh - 64px - 66px); overflow: auto"
       >
-        <v-list v-if="length > 0" class="py-0">
-          <boards-list :items="ongoing" icon="$ongoing" />
-          <boards-list :items="tasks" color="#333" icon="$tasks" />
-          <boards-list :items="done" color="success" icon="$done" />
+        <v-list v-if="length > 0" class="py-0" dense>
+          <boards-list dense :items="ongoing" icon="$ongoing" />
+          <boards-list dense :items="tasks" color="#333" icon="$tasks" />
+          <boards-list dense :items="done" color="success" icon="$done" />
         </v-list>
         <div
           v-else
@@ -31,7 +31,7 @@
           class="d-flex justify-center align-center"
         >
           <div align="center">
-            No Kanban Boards <br />
+            No Projects Available <br />
             Click + symbol to create
           </div>
         </div>
