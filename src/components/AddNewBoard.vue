@@ -42,7 +42,7 @@
 </template>
 <script>
 export default {
-  name: "AddNewTask",
+  name: "AddNewBoard",
   data: () => ({
     board: {
       name: null,

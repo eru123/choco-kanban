@@ -11,6 +11,7 @@ const mutate = (stateInstance) => {
 const state = {
   title: "Kanban Boards",
   kanban: [],
+  forceRenderKey: "default",
 };
 
 const mutations = {
@@ -18,6 +19,10 @@ const mutations = {
   kanbanPush: (state, value) => {
     const { name, items } = value;
     state.kanban.push({ name, items });
+  },
+  kanbanItemPush: (state, value) => {
+    const { index, item } = value;
+    state.kanban[index].items.push(item);
   },
 };
 

@@ -64,6 +64,7 @@ export default {
     Vue.prototype.$kanban = function () {
       const toLocal = () => {
         store.set(appKey, this.$store.state.kanban);
+        this.$store.commit("forceRenderKey", String(Date.now()));
       };
 
       const toStore = () => {
@@ -76,10 +77,19 @@ export default {
         toLocal();
       };
 
+      const addTask = (index, task) => {
+        const { name, status, due } = task;
+        this.$store.commit("kanbanItemPush", {
+          index,
+          item: { name, status, due },
+        });
+        toLocal();
+      };
       return {
         toLocal,
         toStore,
         addBoard,
+        addTask,
       };
     };
   },

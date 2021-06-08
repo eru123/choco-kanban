@@ -32,6 +32,7 @@ export default new Vuetify({
       done: "fas fa-clipboard-check",
       back: "fas fa-arrow-left",
       settings: "fas fa-cog",
+      option: "fas fa-ellipsis-v",
     },
   },
 });
