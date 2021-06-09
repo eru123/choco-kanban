@@ -1,5 +1,6 @@
 # choco-kanban
-
+## Demo
+See project's demo at [Demo](https://choco-kanban.web.app)
 ## Project setup
 ```
 yarn install
