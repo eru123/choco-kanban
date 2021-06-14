@@ -38,6 +38,18 @@ export default {
         isMobile() {
           return this.$vuetify.breakpoint.mdAndDown;
         },
+        boardSelect() {
+          return this.$store.state.boardSelect;
+        },
+        taskSelect() {
+          return this.$store.state.taskSelect;
+        },
+        boardSelected() {
+          return this.$store.state.boardSelected;
+        },
+        taskSelected() {
+          return this.$store.state.taskSelected;
+        },
       },
       methods: {
         kanbanPriority(boards) {
@@ -87,6 +99,17 @@ export default {
             done,
           };
         },
+        toggleTaskSelect() {
+          this.$store.commit("taskSelect", !this.taskSelect);
+          this.$store.commit("taskSelected", []);
+        },
+        toggleTaskSelectItem(k) {
+          this.$store.dispatch("toggleTaskSelectItem", k);
+        },
+        toggleBoardSelect() {
+          this.$store.commit("boardSelect", !this.boardSelect);
+          this.$store.commit("boardSelected", []);
+        },
       },
     });
     Vue.directive("remaining", function (el, binding) {
@@ -128,14 +151,14 @@ export default {
         const due = remains(binding.value.due);
         res =
           binding.value.status == "done"
-            ? "✔️ Accompished"
+            ? "✔️ Done before Due"
             : due.value < 1
             ? "⚠️ <span style='color: #C62828;text-shadow:1px 1px 1px #FFEBEE'>Already Due</span>"
             : due.unit
             ? `🕒 Due in ${due.value} ${due.unit}`
             : "🕒 No Due +";
 
-        if (binding.value.hasAlarm) {
+        if (binding.value.hasAlarm && binding.value.status != "done") {
           const alarm = alarms(binding.value.due, binding.value.alarm);
           console.log("alarm", alarm);
           res +=

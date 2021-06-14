@@ -2,7 +2,7 @@
   <v-menu offset-x left>
     <template v-slot:activator="{ on, attrs }">
       <v-btn icon v-bind="attrs" v-on="on">
-        <v-icon>$option</v-icon>
+        <v-icon color="#333">$settings</v-icon>
       </v-btn>
     </template>
     <v-list dense class="py-0">

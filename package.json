@@ -5,14 +5,20 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
+        "build:apk": "cd android && gradlew assembleRelease",
         "lint": "vue-cli-service lint --fix",
         "deploy:firebase": "yarn lint && yarn build && firebase deploy --only hosting",
         "deploy:local": "yarn lint && yarn build && serve -s dist",
-        "generate:icons": "npx vue-asset-generate -a public/img/icon.png -o public/img/icons --no-manifest",
-        "push": "yarn lint && git add . && git commit -am update --no-verify && git push"
+        "gen:i": "npx vue-asset-generate -a public/img/icon.png -o public/img/icons --no-manifest",
+        "push": "yarn lint && git add . && git commit -am update --no-verify && git push",
+        "gen:res": "capacitor-resources -p android",
+        "copy:ks": "copy *.keystore android\\app"
     },
     "dependencies": {
         "@babel/polyfill": "^7.4.4",
+        "@capacitor/android": "^3.0.1",
+        "@capacitor/cli": "^3.0.1",
+        "@capacitor/core": "^3.0.1",
         "@fortawesome/fontawesome-free": "5.15.3",
         "core-js": "^3.6.5",
         "register-service-worker": "^1.7.1",

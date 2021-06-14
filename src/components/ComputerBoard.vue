@@ -4,6 +4,11 @@
       <v-toolbar flat>
         <v-toolbar-title>{{ data.name }}</v-toolbar-title>
         <v-spacer />
+        <v-btn icon @click="toggleTaskSelect"
+          ><v-icon
+            :color="taskSelect ? 'primary' : '#333'"
+            v-text="taskSelect ? '$unselect' : '$select'"
+        /></v-btn>
         <add-new-task />
         <board-settings :item="kanban[index]" />
       </v-toolbar>

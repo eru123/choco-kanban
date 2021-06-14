@@ -33,6 +33,8 @@ export default new Vuetify({
       back: "fas fa-arrow-left",
       settings: "fas fa-cog",
       option: "fas fa-ellipsis-v",
+      select: "far fa-check-square",
+      unselect: "fas fa-check-square",
     },
   },
 });

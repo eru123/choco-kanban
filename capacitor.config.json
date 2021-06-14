@@ -1,0 +1,6 @@
+{
+  "appId": "com.skidd.chocokanban",
+  "appName": "Choco Kanban",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

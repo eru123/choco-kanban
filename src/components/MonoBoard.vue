@@ -35,9 +35,6 @@ export default {
     AppBar,
     MonoBoardFooter,
   },
-  created() {
-    console.log(this.$router.currentRoute.params.board);
-  },
   computed: {
     ...mapState(["kanban"]),
   },

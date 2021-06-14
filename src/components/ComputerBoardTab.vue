@@ -20,7 +20,7 @@
       style="height: calc(100vh - 64px - 64px - 48px); overflow: auto"
     >
       <v-list v-if="items.length > 0" class="py-0" dense>
-        <computer-task-option v-for="(i, k) in items" :key="k" :i="i" />
+        <computer-task-option v-for="i in items" :key="i.task" :i="i" />
       </v-list>
       <div v-else style="flex: 1" align="center">No items for {{ title }}</div>
     </v-card-text>
@@ -69,13 +69,23 @@ export default {
       index = +Number(index);
       const items = [];
       if (this.kanban[index]) {
+        let x = 0;
         this.kanban[index].items.forEach((item) => {
           if (item.status == this.handle) {
+            item["board"] = index;
+            item["task"] = x;
+            item["selected"] = false;
+            this.taskSelected.forEach((i) => {
+              if (i == x) {
+                item["selected"] = true;
+              }
+            });
             items.push(item);
           }
+          x++;
         });
       }
-
+      console.log(items);
       this.items = items;
     },
   },
