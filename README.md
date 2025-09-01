@@ -91,3 +91,6 @@ yarn gen:res
 ```bash
 yarn build:apk
 ```
+
+
+<!-- Security scan triggered at 2025-09-02 01:47:36 -->
